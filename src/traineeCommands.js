@@ -66,14 +66,12 @@ function getTrainee(params) {
     throw new Error(`ERROR: Trainee with ID ${idStr} does not exist`);
   }
 
-  // ✅ return object so index.js prints it with JSON.stringify
   return {
     ...t,
     courses: traineeCoursesNames(t.id),
   };
 }
 
-// ✅ هذا هو الـ handler اللي لازم index.js يناديه
 export function handleTraineeCommand(subCommand, params) {
   switch (subCommand) {
     case "ADD":
