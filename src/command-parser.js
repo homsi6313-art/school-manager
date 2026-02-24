@@ -1,3 +1,23 @@
-export function parseCommand(userInput) {
-  // TODO: Implement the logic to parse the user input and return an object with the command, subcommand, and arguments
+// src/command-parser.js
+export function parseCommand(input) {
+  if (typeof input !== "string") {
+    throw new Error("ERROR: Invalid command");
+  }
+
+  const trimmed = input.trim();
+  if (!trimmed) {
+    return null;
+    throw new Error("ERROR: Invalid command");
+  }
+
+  const parts = trimmed.split(" ").filter(Boolean);
+  const command = parts[0];
+  const subCommand = parts[1];
+  const params = parts.slice(2);
+
+  if (!command || !subCommand) {
+    throw new Error("ERROR: Invalid command");
+  }
+
+  return { command, subCommand, params };
 }
