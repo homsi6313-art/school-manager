@@ -26,7 +26,8 @@ function safeReadJsonArray(filePath) {
   try {
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
-  } catch {
+  } catch (err) {
+    console.error("Error reading JSON file:", err);
     return [];
   }
 }
